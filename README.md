@@ -12,6 +12,8 @@ English | [简体中文](README_zh-CN.md)
     <img src="https://img.shields.io/pypi/v/pdf2zh"/></a>
   <a href="https://pepy.tech/projects/pdf2zh">
     <img src="https://static.pepy.tech/badge/pdf2zh"></a>
+  <a href="https://hub.docker.com/repository/docker/byaidu/pdf2zh">
+    <img src="https://img.shields.io/docker/pulls/byaidu/pdf2zh"></a>
   <!-- License -->
   <a href="./LICENSE">
     <img src="https://img.shields.io/github/license/Byaidu/PDFMathTranslate"/></a>
@@ -31,17 +33,19 @@ PDF scientific paper translation and bilingual comparison.
 - 🌐 Support [multiple languages](#language), and diverse [translation services](#services).
 - 🤖 Provides [commandline tool](#usage), [interactive user interface](#gui), and [Docker](#docker)
 
-Feel free to provide feedback in [GitHub Issues](https://github.com/Byaidu/PDFMathTranslate/issues) or [Telegram Group](https://t.me/+Z9_SgnxmsmA5NzBl).
+Feel free to provide feedback in [GitHub Issues](https://github.com/Byaidu/PDFMathTranslate/issues), [Telegram Group](https://t.me/+Z9_SgnxmsmA5NzBl) or [QQ Group](https://qm.qq.com/q/DixZCxQej0).
 
 <h2 id="updates">Updates</h2>
 
+- [Nov. 26 2024] CLI now supports online file(s) *(by [@reycn](https://github.com/reycn))*  
+- [Nov. 24 2024] [ONNX](https://github.com/onnx/onnx) support to reduce dependency sizes *(by [@Wybxc](https://github.com/Wybxc))*  
+- [Nov. 23 2024] 🌟 [Public Service](#demo)  online! *(by [@Byaidu](https://github.com/Byaidu))*  
+- [Nov. 23 2024] Firewall for preventing web bots *(by [@Byaidu](https://github.com/Byaidu))*  
+- [Nov. 22 2024] GUI now supports Italian, and has been improved *(by [@Byaidu](https://github.com/Byaidu), [@reycn](https://github.com/reycn))*  
+- [Nov. 22 2024] You can now share your deployed service to others *(by [@Zxis233](https://github.com/Zxis233))*  
+- [Nov. 22 2024] Now supports Tencent Translation *(by [@hellofinch](https://github.com/hellofinch))*  
 - [Nov. 21 2024] GUI now supports downloading dual-document *(by [@reycn](https://github.com/reycn))*  
-- [Nov. 20 2024] GUI now supports specifying Ollama and OpenAI models *(by [@IuvenisSapiens](https://github.com/IuvenisSapiens), [@Byaidu](https://github.com/Byaidu))*  
 - [Nov. 20 2024] 🌟 [Demo](#demo)  online! *(by [@reycn](https://github.com/reycn))*  
-- [Nov. 20 2024] Supports [Docker](#docker) *(by [@Byaidu](https://github.com/Byaidu))*  
-- [Nov. 20 2024] Supports [multiple-threads translation](#threads) *(by [@Byaidu](https://github.com/Byaidu))*  
-- [Nov. 19 2024] Provides an [interactive graphical user interface](#gui) *(by [@reycn](https://github.com/reycn))*  
-- [Nov. 18 2024] Supports [more services: DeepL, DeepLX, and Azure](#services) *(by [@reycn](https://github.com/reycn), [@Hanaasagi](https://github.com/Hanaasagi))*  
 
 <h2 id="preview">Preview</h2>
 
@@ -49,25 +53,31 @@ Feel free to provide feedback in [GitHub Issues](https://github.com/Byaidu/PDFMa
 <img src="./docs/images/preview.gif" width="80%"/>
 </div>
 
-<h2 id="demo">Demo 🌟</h2>
+<h2 id="demo">Public Service 🌟</h2>
 
-You can try [our demo on HuggingFace](https://huggingface.co/spaces/reycn/PDFMathTranslate-Docker) without installation.  
+### Free Service (<https://pdf2zh.com/>)
+
+You can try our [public service](https://pdf2zh.com/) online without installation.  
+
+### Hugging Face Demo
+
+You can try [our demo on HuggingFace](https://huggingface.co/spaces/reycn/PDFMathTranslate-Docker) without installation.
 Note that the computing resources of the demo are limited, so please avoid abusing them.
 
 <h2 id="install">Installation and Usage</h2>
 
-We provide three methods for using this project: [Commandline](#cmd), [GUI](#gui), and [Docker](#docker).
+We provide three methods for using this project: [Commandline](#cmd), [GUI](#gui), [Portable](#portable), and [Docker](#docker).
 
 <h3 id="cmd">Method I. Commandline</h3>
 
   1. Python installed (3.8 <= version <= 3.12)
-  2. Install our package
+  2. Install our package:
 
       ```bash
       pip install pdf2zh
       ```
 
-  3. Use:
+  3. Execute translation, files generated in [current working directory](https://chatgpt.com/share/6745ed36-9acc-800e-8a90-59204bd13444):
 
       ```bash
       pdf2zh document.pdf
@@ -76,7 +86,7 @@ We provide three methods for using this project: [Commandline](#cmd), [GUI](#gui
 <h3 id="gui">Method II. GUI</h3>
 
 1. Python installed (3.8 <= version <= 3.12)
-2. Install our package
+2. Install our package:
 
       ```bash
       pip install pdf2zh
@@ -98,13 +108,17 @@ We provide three methods for using this project: [Commandline](#cmd), [GUI](#gui
 
 See [documentation for GUI](./docs/README_GUI.md) for more details.
 
-<h3 id="docker">Method III. Docker</h3>
+<h3 id="portable">Method III. Portable</h3>
+
+Download and double-click to run [setup.bat](https://raw.githubusercontent.com/Byaidu/PDFMathTranslate/refs/heads/main/setup.bat)
+
+<h3 id="docker">Method IV. Docker</h3>
 
 1. Pull and run:
 
     ```bash
     docker pull byaidu/pdf2zh
-    docker run -p 7860:7860 byaidu/pdf2zh
+    docker run -d -p 7860:7860 byaidu/pdf2zh
     ```
 
 2. Open in browser:
@@ -129,7 +143,7 @@ For docker deployment on cloud service:
 
 <h2 id="usage">Advanced Options</h2>
 
-Execute the translation command in the command line to generate the translated document `example-zh.pdf` and the bilingual document `example-dual.pdf` in the current directory. Use Google as the default translation service.
+Execute the translation command in the command line to generate the translated document `example-zh.pdf` and the bilingual document `example-dual.pdf` in the current working directory. Use Google as the default translation service.
 
 <img src="./docs/images/cmd.explained.png" width="580px"  alt="cmd"/>  
 
@@ -137,15 +151,18 @@ In the following table, we list all advanced options for reference:
 
 | Option    | Function | Example |
 | -------- | ------- |------- |
+| files | Local files |  `pdf2zh ~/local.pdf` |
+| links | Online files |  `pdf2zh http://arxiv.org/paper.pdf` |
 | `-i`  | [Enter GUI](#gui) |  `pdf2zh -i` |
 | `-p`  | [Partial document translation](#partial) |  `pdf2zh example.pdf -p 1` |
 | `-li` | [Source language](#languages) |  `pdf2zh example.pdf -li en` |
 | `-lo` | [Target language](#languages) |  `pdf2zh example.pdf -lo zh` |
 | `-s`  | [Translation service](#services) |  `pdf2zh example.pdf -s deepl` |
 | `-t`  | [Multi-threads](#threads) | `pdf2zh example.pdf -t 1` |
+| `-o`  | Output dir | `pdf2zh example.pdf -o output` |
 | `-f`, `-c` | [Exceptions](#exceptions) | `pdf2zh example.pdf -f "(MS.*)"` |
 
-Some services require setting environmental variables. Please refer to [ChatGPT](https://chatgpt.com/share/6734a83d-9d48-800e-8a46-f57ca6e8bcb4) for how to set environment variables.
+Some services require setting [environmental variables](https://chatgpt.com/share/6734a83d-9d48-800e-8a46-f57ca6e8bcb4).
 
 <h3 id="partial">Full / partial document translation</h3>
 
@@ -230,10 +247,21 @@ pdf2zh example.pdf -li en -lo ja
   ```bash
   pdf2zh example.pdf -s azure
   ```
+- **Tencent Machine Translation**
+
+  See [Tencent Machine Translation](https://www.tencentcloud.com/products/tmt?from_qcintl=122110104)
+
+  Following ENVs are required:
+  - `TENCENT_SECRET_ID`, e.g., `export TENCENT_SECRET_ID=AKIDxxx`
+  - `TENCENT_SECRET_KEY`, e.g, `export TENCENT_SECRET_KEY=xxx`
+
+  ```bash
+  pdf2zh example.pdf -s tencent
+  ```
 
 <h3 id="exceptions">Translate wih exceptions</h3>
 
-Use regex to specify formula fonts and characters that need to be preserved.
+Use regex to specify formula fonts and characters that need to be preserved:
 
 ```bash
 pdf2zh example.pdf -f "(CM[^RT].*|MS.*|.*Ital)" -c "(\(|\||\)|\+|=|\d|[\u0080-\ufaff])"
@@ -246,6 +274,22 @@ Use `-t` to specify how many threads to use in translation:
 ```bash
 pdf2zh example.pdf -t 1
 ```
+
+<h2 id="todo">TODO</h2>
+
+- [ ] Parse layout with DocLayNet based models, [PaddleX](https://github.com/PaddlePaddle/PaddleX/blob/17cc27ac3842e7880ca4aad92358d3ef8555429a/paddlex/repo_apis/PaddleDetection_api/object_det/official_categories.py#L81), [PaperMage](https://github.com/allenai/papermage/blob/9cd4bb48cbedab45d0f7a455711438f1632abebe/README.md?plain=1#L102), [SAM2](https://github.com/facebookresearch/sam2)
+
+- [ ] Fix page rotation, table of contents, format of lists
+
+- [ ] Fix pixel formula in old papers
+
+- [ ] Support multiple language with [Noto Font](https://fonts.google.com/noto), [Ubuntu Font](https://design.ubuntu.com/font)
+
+- [ ] Async retry except KeyboardInterrupt
+
+- [ ] Knuth–Plass algorithm for western languages
+
+- [ ] Support non-PDF/A files
 
 <h2 id="acknowledgement">Acknowledgements</h2>
 
@@ -267,12 +311,14 @@ pdf2zh example.pdf -t 1
   <img src="https://opencollective.com/PDFMathTranslate/contributors.svg?width=890&button=false" />
 </a>
 
+![Alt](https://repobeats.axiom.co/api/embed/dfa7583da5332a11468d686fbd29b92320a6a869.svg "Repobeats analytics image")
+
 <h2 id="star_hist">Star History</h2>
 
 <a href="https://star-history.com/#Byaidu/PDFMathTranslate&Date">
  <picture>
    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Byaidu/PDFMathTranslate&type=Date&theme=dark" />
    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Byaidu/PDFMathTranslate&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Byaidu/PDFMathTranslate&type=Date" width="70%"/>
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Byaidu/PDFMathTranslate&type=Date"/>
  </picture>
 </a>
